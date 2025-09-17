@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -58,4 +60,21 @@ dependencies {
 
     // compose
     implementation(libs.androidx.compose.material)
+
+    // coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2")
+
+    // dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.57.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.57.1")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.3.0")
+    kapt("androidx.hilt:hilt-compiler:1.3.0")
+
+    // room
+    implementation("androidx.room:room-runtime:2.8.0")
+    kapt("androidx.room:room-compiler:2.8.0")
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.8.0")
 }
