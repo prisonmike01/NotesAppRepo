@@ -64,7 +64,7 @@ class AddEditNoteViewModel @Inject constructor(
     }
 
 
-    fun OnEvent(event: AddEditNoteEvent) {
+    fun onEvent(event: AddEditNoteEvent) {
         when(event) {
             is AddEditNoteEvent.EnteredTitle -> {
                 _noteTitle.value = noteTitle.value.copy(
