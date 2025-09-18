@@ -1,9 +1,9 @@
 package com.example.notesapp.feature_note.domain.use_case
 
 // ezt kell a view modellbe injectálni
-data class NotesUseCases(
+data class NoteUseCases(
     val getNotes: GetNotesUseCase,
-    val deleteNote: DeleteNotesUseCase,
+    val deleteNote: DeleteNoteUseCase,
     val addNote: AddNoteUseCase,
 
-)
+    )
