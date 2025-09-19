@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.navigation.NavType
@@ -19,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,26 +34,27 @@ class MainActivity : ComponentActivity() {
                         navController = navController,
                         startDestination = Screen.NotesScreen.route,
                     ) {
-                        composable(route = Screen.NotesScreen.route) {
+                        composable(
+                            route = Screen.NotesScreen.route) {
                             NotesScreen(navController = navController)
                         }
                         composable(
                             route = Screen.AddEditNoteScreen.route +
-                                "?noteId={noteId}&noteColor={noteColor}",
-                                arguments = listOf(
-                                    navArgument(
-                                        name = "noteId"
-                                    ) {
-                                        type = NavType.IntType
-                                        defaultValue = -1
-                                    },
-                                    navArgument(
-                                        name = "noteColor"
-                                    ) {
-                                        type = NavType.IntType
+                                    "?noteId={noteId}&noteColor={noteColor}",
+                            arguments = listOf(
+                                navArgument(
+                                    name = "noteId"
+                                ) {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                },
+                                navArgument(
+                                    name = "noteColor"
+                                ) {
+                                    type = NavType.IntType
 
-                                    }
-                                )
+                                }
+                            )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1
                             AddEditNoteScreen(
