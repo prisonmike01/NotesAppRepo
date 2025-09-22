@@ -4,3 +4,5 @@ Implemented local data persistence with Room Database, allowing users to create,
 Used Dagger-Hilt for dependency injection and Jetpack Compose for responsive UI.
 
 We can choose a color for each note, and then order them by color, title or content.
+
+![alt text](https://github.com/prisonmike01/NotesAppRepo/blob/main/notes.jpg?raw=true)
