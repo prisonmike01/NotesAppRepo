@@ -5,13 +5,14 @@ import androidx.room.RoomDatabase
 import com.example.notesapp.feature_note.domain.model.Note
 
 @Database(
-    entities = [Note::class],
-    version = 1
+    entities = [Note::class], // különbözű táblák
+    version = 1 // ha van újabb verzió, akkor hogy kell migratelni az régi adatot
 )
 abstract class NoteDatabase: RoomDatabase() {
 
-    abstract val noteDao: NoteDao
+    abstract val noteDao: NoteDao // ezt is a room implementálja
 
+    // itt lehetnek felsorolva a daok
     companion object {
         const val DATABASE_NAME = "notes_db"
     }
