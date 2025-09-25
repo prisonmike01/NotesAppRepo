@@ -16,16 +16,26 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import jakarta.inject.Singleton
 
-// egy modul -> egy feature
-@Module
-@InstallIn(SingletonComponent::class)
+/**
+ * A feature-hot tartozó dependenciket manageljük.
+ *
+ * Egy modulhoz egy feature tartozik.
+ */
+@Module // Daggertől
+
+@InstallIn(SingletonComponent::class) // Azért singletonba, mert egész app alatt élnek az apik amik ebben a modulban vannak kezelve.
 object AppModule {
 
     @Provides
-    @Singleton
+    @Singleton // nem ue mint a SigletonComponent -> ez scope
+    // ha nem lenne itt, akk minden új alkalommal új példány lenne készítve
+    //
+    // így már tudja a dagger hogyan készítsen NoteDatabase osztályt
+    // tehát bármikor ilyen példányt kérünk, mint pl a ~~NoteRepositoryIMLP-ben
+    // akkor a dagger a moduljaban megkeresi és átadja a konstruktorban a háttérben
     fun provideNoteDatabase(app: Application): NoteDatabase {
         return Room.databaseBuilder(
-            app,
+            app,        // az app contex
             NoteDatabase::class.java,
             NoteDatabase.DATABASE_NAME
         ).build()
@@ -34,7 +44,8 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNoteRepository(db: NoteDatabase): NoteRepository {
-        return NoteRepositoryImlp(db.noteDao) // ezekkel tesztelni a db-t
+        // egy másik test AppModulban ezekkel tesztelni a db-t
+        return NoteRepositoryImlp(db.noteDao)
     }
 
     @Provides
