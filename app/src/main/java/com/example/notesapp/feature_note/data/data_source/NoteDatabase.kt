@@ -4,9 +4,16 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.notesapp.feature_note.domain.model.Note
 
+/**
+ * A Room adatbázis osztálya.
+ *
+ * entities: különbözű táblák
+ *
+ * version: ha van újabb verzió, akkor hogy kell migratelni az régi adatot
+ */
 @Database(
-    entities = [Note::class], // különbözű táblák
-    version = 1 // ha van újabb verzió, akkor hogy kell migratelni az régi adatot
+    entities = [Note::class],
+    version = 1
 )
 abstract class NoteDatabase: RoomDatabase() {
 

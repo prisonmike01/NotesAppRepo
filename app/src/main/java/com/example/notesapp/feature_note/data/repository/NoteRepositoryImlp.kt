@@ -5,12 +5,18 @@ import com.example.notesapp.feature_note.domain.model.Note
 import com.example.notesapp.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
+/**
+ *  Amit a domain layerben definiáltunk, annak az implementációja.
+ *  NoteDao-t dependenciként használja.
+ *
+ *  lsd. NoteRepository
+ */
 class NoteRepositoryImlp(
-    private val dao: NoteDao
+    private val dao: NoteDao // ide kéne a remote API dao
 ) : NoteRepository {
 
     override fun getNotes(): Flow<List<Note>> {
-        return  dao.getNotes()                               // API-val ide kell data logic
+        return dao.getNotes()                // API-val ide kell data logic
     }
 
     override suspend fun getNoteById(id: Int): Note? {
