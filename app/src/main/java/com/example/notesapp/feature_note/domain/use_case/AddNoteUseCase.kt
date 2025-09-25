@@ -4,6 +4,17 @@ import com.example.notesapp.feature_note.domain.model.InvalidNoteException
 import com.example.notesapp.feature_note.domain.model.Note
 import com.example.notesapp.feature_note.domain.repository.NoteRepository
 
+/**
+ *  A UseCase-ek a busniss logic-okat,rule-okat tartalmazzák.
+ *
+ *  Single user actions, amint a ViewModellek hívnak.
+ *  Egy metódusok lehet, ami public: hívják pl. execute-nak VAGY
+ *  operator invoke funcionnal lehet a UseCase hívni mint egy metódust.
+ *
+ *  Nem szabad hogy tudják, honnan kapta a NoteRepositoryImpl az adatot (pl. Room-ból).
+ *  Az összes use case kivéve a 'UseCases', a NoteRepositorytól függ.
+ *  Nagyon újrahasznosíthatóvá teszi a kódokat.
+ */
 class AddNoteUseCase(
     private val repository: NoteRepository
 ) {

@@ -7,10 +7,15 @@ import com.example.notesapp.feature_note.domain.util.OrderType
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+// ha más képernyőn is kéne az összes note valamilyen sorrendben
+// ezt is lehetne haszálni
 class GetNotesUseCase(
     private val repository: NoteRepository
-
 ) {
+    /**
+     * A ViewModel mondja meg milyen order type kell neki.
+     * Default NoteOrder Date alapján.
+     */
     operator fun invoke(
         noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending)
     ): Flow<List<Note>> {

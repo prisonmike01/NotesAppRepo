@@ -1,5 +1,9 @@
 package com.example.notesapp.feature_note.domain.util
 
+/**
+ * Definiálja, hogy mi alapján (Title, Date vagy Color)
+ * milyen irányba (OrderType) rendezünk.
+ * */
 sealed class NoteOrder(val orderType: OrderType) {
     class Title(orderType: OrderType) : NoteOrder(orderType)
     class Date(orderType: OrderType) : NoteOrder(orderType)
