@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
+// a presentaion layer / screen_name / components mappában a specifikus
+// Composable ek vannak erre a képernyőre
 @Composable
 fun DefaultRadioButton(
     text: String,
@@ -31,7 +33,10 @@ fun DefaultRadioButton(
                 unselectedColor = MaterialTheme.colors.onBackground
             )
         )
+        // hely a gomb és a hozzátartozó szöveg mellett
         Spacer(modifier = Modifier.width(8.dp))
+
+        // a szöveg mellé
         Text(text = text, style = MaterialTheme.typography.body1)
 
     }

@@ -9,14 +9,15 @@ sealed class NoteOrder(val orderType: OrderType) {
     class Date(orderType: OrderType) : NoteOrder(orderType)
     class Color(orderType: OrderType) : NoteOrder(orderType)
 
-
+    // OrderSection *** miatt kell ez
+    // pass the new ordertype, keep the noteOrder, but we change the orderType
     // ha dataclassok lennének fentebb, akkor lenne alapból copy
-    fun copy(ordertype: OrderType) : NoteOrder {
+    fun copy(orderType: OrderType) : NoteOrder {
         // amikor a jelenlegi noteorder..
         return when(this) {
-            is Title -> Title(ordertype)
-            is Date -> Date(ordertype)
-            is Color -> Color(ordertype)
+            is Title -> Title(orderType)
+            is Date -> Date(orderType)
+            is Color -> Color(orderType)
         }
     }
 }

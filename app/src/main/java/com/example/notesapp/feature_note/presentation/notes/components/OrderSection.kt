@@ -16,10 +16,10 @@ import com.example.notesapp.feature_note.domain.util.NoteOrder
 fun OrderSection(
     modifier: Modifier = Modifier,
 
-    // eldönti melyik gomb lett megnyomva
+    // eldönti melyik radiobutton lett megnyomva
     noteOrder: NoteOrder = NoteOrder.Date(OrderType.Descending),
 
-    // amikor megváltozik az irány, az új NoteOrder-t egy  callback fun ként adjuk át a parent composable-nek
+    // amikor megváltozik az irány, az új NoteOrder-t egy callback fun ként adjuk át a parent composable-nek
     onOrderChange: (NoteOrder) -> Unit
 ) {
     Column(
@@ -29,8 +29,11 @@ fun OrderSection(
             modifier = Modifier.fillMaxWidth()
         ) {
             DefaultRadioButton(
-                text = "Title",
+                text = "Title", /* TODO title szövege string resourcal valami */
                 selected = noteOrder is NoteOrder.Title,
+
+                // meghívjuk a paraméterként átadott függvényt, ami olyan függvény, hogy
+                // egy NoteOrder típusú paramétert vár és Unit-tal tér vissza
                 onSelect = { onOrderChange(NoteOrder.Title(noteOrder.orderType)) }
             )
             Spacer(modifier = Modifier.width(8.dp))
@@ -57,6 +60,7 @@ fun OrderSection(
                 text = "Ascending",
                 selected = noteOrder.orderType is OrderType.Ascending,
                 onSelect = {
+                    // *** meg akarjuk tartani a pillanatnyi NoteOrder-t, de a NodeOrderType-t cserélni kell
                     onOrderChange(noteOrder.copy(OrderType.Ascending))
                 }
             )

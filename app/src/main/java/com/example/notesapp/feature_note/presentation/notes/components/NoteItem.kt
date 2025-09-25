@@ -50,7 +50,6 @@ fun NoteItem(
                 lineTo(size.width, size.height)
                 lineTo(0f, size.height)
                 close()
-
             }
 
             // amit a path-en kívül rajzolunk le lesz vágva
