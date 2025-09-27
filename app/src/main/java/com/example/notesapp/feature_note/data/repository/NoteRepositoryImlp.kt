@@ -1,6 +1,6 @@
 package com.example.notesapp.feature_note.data.repository
 
-import com.example.notesapp.feature_note.data.data_source.persistence.NoteDao
+import com.example.notesapp.feature_note.data.data_source.NoteDao
 import com.example.notesapp.feature_note.domain.model.Note
 import com.example.notesapp.feature_note.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow

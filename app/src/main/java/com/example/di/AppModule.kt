@@ -2,7 +2,7 @@ package com.example.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.notesapp.feature_note.data.data_source.persistence.NoteDatabase
+import com.example.notesapp.feature_note.data.data_source.NoteDatabase
 import com.example.notesapp.feature_note.domain.repository.NoteRepository
 import com.example.notesapp.feature_note.data.repository.NoteRepositoryImlp
 import com.example.notesapp.feature_note.domain.use_case.AddNoteUseCase
