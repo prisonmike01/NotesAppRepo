@@ -1,7 +1,7 @@
 package com.example.notesapp.feature_note.presentation.notes
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -22,6 +22,9 @@ import com.example.notesapp.feature_note.presentation.notes.components.OrderSect
 import com.example.notesapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
+/**
+ *
+ */
 @Composable
 fun NotesScreen(
     navController: NavController,
@@ -29,7 +32,7 @@ fun NotesScreen(
 ) {
     val state = viewModel.state.value
     val scaffoldState = rememberScaffoldState()
-    val scope = rememberCoroutineScope()
+    val scope = rememberCoroutineScope() // snakbarnak
 
     Scaffold(
         floatingActionButton = {
@@ -43,6 +46,7 @@ fun NotesScreen(
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
             }
         },
+        // bottom navigation ide
         scaffoldState = scaffoldState
     ) { innerPadding ->
         Column(
@@ -57,7 +61,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = "Notes app",
                     style = MaterialTheme.typography.h4
                 )
                 IconButton(
@@ -93,12 +97,17 @@ fun NotesScreen(
                         note = note,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .clickable {
-                                navController.navigate(
+                            .combinedClickable(
+                                onClick = { navController.navigate(
                                     Screen.AddEditNoteScreen.route +
-                                        "?noteId=${note.id}&noteColor=${note.color}"
-                                )
-                            },
+                                            "?noteId=${note.id}&noteColor=${note.color}")
+                                },
+                                onLongClick = { /* TODO megjeleníteni a dialogot */
+
+                                    //NoteDialog()
+                                    // vidiben 40. perc
+                                }
+                            ),
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
