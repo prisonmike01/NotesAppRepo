@@ -5,7 +5,7 @@ import com.example.notesapp.feature_note.domain.model.Note
 import com.example.notesapp.feature_note.domain.repository.NoteRepository
 
 /**
- *  A UseCase-ek a busniss logic-okat,rule-okat tartalmazzák.
+ *  A UseCase-ek a busniss logic-okat,rule-okat tartalmazzák. Használják a repositorykat.
  *
  *  Single user actions, amint a ViewModellek hívnak.
  *  Egy metódusok lehet, ami public: hívják pl. execute-nak VAGY
@@ -16,7 +16,7 @@ import com.example.notesapp.feature_note.domain.repository.NoteRepository
  *  Nagyon újrahasznosíthatóvá teszi a kódokat.
  */
 class AddNoteUseCase(
-    private val repository: NoteRepository
+    private val repository: NoteRepository // fontos hogy ne a repository implementációja legyen, mert így könnyen kicserélhető testhez
 ) {
 
     @Throws(InvalidNoteException::class)
