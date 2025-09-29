@@ -4,7 +4,7 @@ import com.example.notesapp.feature_note.domain.model.Note
 import kotlinx.coroutines.flow.Flow
 
 /**
- *  Directly eléri a data source-okat: pl. database-t v/és remote API-t.
+ *  Az IMLP -> Directly eléri a data source-okat: pl. database-t v/és remote API-t.
  *
  *  Definiálja, milyen data manipulációk léteznek, de nem részletezi azokat.
  *  Interface, hogy lehessen tesztelni hamis repositorykkal.
